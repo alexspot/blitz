@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 /config/custom.yml
+.idea/.generators
+.idea/.name
+.idea/.rakeTasks
