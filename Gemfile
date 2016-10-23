@@ -8,6 +8,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'upwork-api'
+gem 'telegram-bot-ruby'
+gem 'sidekiq'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug'

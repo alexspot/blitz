@@ -1,12 +1,30 @@
 require 'upwork/api'
 require 'upwork/api/routers/auth'
 require 'upwork/api/routers/jobs/search'
-
-
 class UpworkJob < ActiveRecord::Base
 
+  def self.send_telegram_message(text)
+    TelegramBotWorker.new.perform_async(text)
+  end
+
+  def self.format_response
+    self.search_for_jobs['jobs'].each do |job|
+      p job['title']
+      p job['snippet'][0..50] #50 symbols for snippet to return
+      p job['job_type']
+      p job['client']['payment_verification_status']
+    end
+  end
+
   def self.search_for_jobs
-    params = {'q' => 'python'}
+    params = {
+        'q' => 'junior rails',
+        'job_type'    => 'hourly',
+        'workload'    => 'part_time,full_time',
+        'duration'    => 'quarter,semester',
+        'days_posted' => 5,
+
+    }
     Upwork::Api::Routers::Jobs::Search.new(self.client).find(params)
   end
 

@@ -19,3 +19,4 @@
 .idea/.generators
 .idea/.name
 .idea/.rakeTasks
+.env
