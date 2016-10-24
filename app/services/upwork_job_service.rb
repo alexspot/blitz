@@ -11,7 +11,6 @@ class UpworkJobService
         UpworkJob.create(job_id:job['id']) #saved new job to db
         message = "Blitzkrieg bot found new job:
                    #{job['title']}
-                   #{job['snippet']}
                    Job Type: #{job['job_type']}
                    Workload: #{job['workload']}
                    Client PS: #{job['client']['payment_verification_status']}
